@@ -1,0 +1,9 @@
+Improvements.txt
+
+1. Css: Colours have been added, buttons made to be aesthetically appealing. Formatting, adding buttons, background colour.
+2. Visualize step: Shows next possible move when clicking on a piece.
+3. Puns: Puns appear on the start window for a little but of Shogi fun.
+4. GUI updates: GUI is set up in a way that makes it easier for the user to navigate.
+5. Tips: Clickable button that alerts the user and suggests tips about Shogi.
+6. Refresh button: Sets the board how it was before moving the piece (before clicking makeMove).
+7. AI comments: When playing with the AI, it will comment on the user's move.

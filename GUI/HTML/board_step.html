@@ -1,0 +1,1655 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="/css/board.css">
+    <script src="/js/jquery-1.10.1.min.js"></script>
+    <script src="/js/json3.min.js"></script>
+    <script src="/js/generateBoard.js"></script>
+
+</head>
+
+<body class="blink-show">
+
+
+    <div class="moveItems">
+
+
+        <div class="paper" onclick="nextMove()">
+            <p id="num">Next Move</p>
+            <div class="ripple"></div>
+        </div>
+
+        <div class="paper" onclick="prevMove()">
+            <p id="num">Prev Move</p>
+            <div class="ripple"></div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="mainGame">
+        <div id="currentPlayer">Black</div>
+        <div id="dvBHand">
+            <table id="BHand">
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="dvTable">
+            <table id="Board">
+                <tbody>
+                    <tr>
+                        <td class="element" id="1,16">
+                            <div class="cell" id="Black:l:1,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">l</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,16">
+                            <div class="cell" id="Black:n:2,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">n</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,16">
+                            <div class="cell" id="Black:fl:3,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">fl</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,16">
+                            <div class="cell" id="Black:i:4,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">i</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,16">
+                            <div class="cell" id="Black:c:5,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">c</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,16">
+                            <div class="cell" id="Black:s:6,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">s</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,16">
+                            <div class="cell" id="Black:g:7,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">g</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,16">
+                            <div class="cell" id="Black:de:8,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">de</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,16">
+                            <div class="cell" id="Black:k:9,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece" id="King">k</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,16">
+                            <div class="cell" id="Black:g:10,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">g</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,16">
+                            <div class="cell" id="Black:s:11,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">s</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,16">
+                            <div class="cell" id="Black:c:12,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">c</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,16">
+                            <div class="cell" id="Black:i:13,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">i</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,16">
+                            <div class="cell" id="Black:fl:14,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">fl</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,16">
+                            <div class="cell" id="Black:n:15,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">n</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,16">
+                            <div class="cell" id="Black:l:16,16" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">l</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,15">
+                            <div class="cell" id="Black:rc:1,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">rc</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,15">
+                            <div class="cell" id=":-:2,15" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,15">
+                            <div class="cell" id="Black:cs:3,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,15">
+                            <div class="cell" id="Black:cs:4,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,15">
+                            <div class="cell" id=":-:5,15" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,15">
+                            <div class="cell" id="Black:bt:6,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">bt</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,15">
+                            <div class="cell" id="Black:ph:7,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">ph</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,15">
+                            <div class="cell" id="Black:q:8,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">q</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,15">
+                            <div class="cell" id="Black:ln:9,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">ln</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,15">
+                            <div class="cell" id="Black:kr:10,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">kr</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,15">
+                            <div class="cell" id="Black:bt:11,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">bt</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,15">
+                            <div class="cell" id=":-:12,15" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,15">
+                            <div class="cell" id="Black:cs:13,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,15">
+                            <div class="cell" id="Black:cs:14,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,15">
+                            <div class="cell" id=":-:15,15" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,15">
+                            <div class="cell" id="Black:rc:16,15" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">rc</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,14">
+                            <div class="cell" id="Black:ss:1,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">ss</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,14">
+                            <div class="cell" id="Black:vs:2,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">vs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,14">
+                            <div class="cell" id="Black:b:3,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">b</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,14">
+                            <div class="cell" id="Black:dh:4,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">dh</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,14">
+                            <div class="cell" id="Black:dk:5,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">dk</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,14">
+                            <div class="cell" id="Black:wb:6,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">wb</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,14">
+                            <div class="cell" id="Black:fd:7,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">fd</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,14">
+                            <div class="cell" id="Black:fe:8,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">fe</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,14">
+                            <div class="cell" id="Black:lh:9,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">lh</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,14">
+                            <div class="cell" id="Black:fd:10,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">fd</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,14">
+                            <div class="cell" id="Black:wb:11,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">wb</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,14">
+                            <div class="cell" id="Black:dk:12,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">dk</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,14">
+                            <div class="cell" id="Black:dh:13,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">dh</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,14">
+                            <div class="cell" id="Black:b:14,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">b</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,14">
+                            <div class="cell" id="Black:vs:15,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">vs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,14">
+                            <div class="cell" id="Black:ss:16,14" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">ss</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,13">
+                            <div class="cell" id="Black:sm:1,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">sm</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,13">
+                            <div class="cell" id="Black:vm:2,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">vm</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,13">
+                            <div class="cell" id="Black:r:3,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">r</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,13">
+                            <div class="cell" id="Black:hf:4,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">hf</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,13">
+                            <div class="cell" id="Black:se:5,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">se</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,13">
+                            <div class="cell" id="Black:bg:6,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">bg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,13">
+                            <div class="cell" id="Black:rg:7,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">rg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,13">
+                            <div class="cell" id="Black:vg:8,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">vg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,13">
+                            <div class="cell" id="Black:gg:9,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">gg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,13">
+                            <div class="cell" id="Black:rg:10,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">rg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,13">
+                            <div class="cell" id="Black:bg:11,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">bg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,13">
+                            <div class="cell" id="Black:se:12,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">se</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,13">
+                            <div class="cell" id="Black:hf:13,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">hf</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,13">
+                            <div class="cell" id="Black:r:14,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">r</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,13">
+                            <div class="cell" id="Black:vm:15,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">vm</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,13">
+                            <div class="cell" id="Black:sm:16,13" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">sm</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,12">
+                            <div class="cell" id="Black:p:1,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,12">
+                            <div class="cell" id="Black:p:2,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,12">
+                            <div class="cell" id="Black:p:3,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,12">
+                            <div class="cell" id="Black:p:4,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,12">
+                            <div class="cell" id="Black:p:5,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,12">
+                            <div class="cell" id="Black:p:6,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,12">
+                            <div class="cell" id="Black:p:7,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,12">
+                            <div class="cell" id="Black:p:8,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,12">
+                            <div class="cell" id="Black:p:9,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,12">
+                            <div class="cell" id="Black:p:10,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,12">
+                            <div class="cell" id="Black:p:11,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,12">
+                            <div class="cell" id="Black:p:12,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,12">
+                            <div class="cell" id="Black:p:13,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,12">
+                            <div class="cell" id="Black:p:14,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,12">
+                            <div class="cell" id="Black:p:15,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,12">
+                            <div class="cell" id="Black:p:16,12" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">p</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,11">
+                            <div class="cell" id=":-:1,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,11">
+                            <div class="cell" id=":-:2,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,11">
+                            <div class="cell" id=":-:3,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,11">
+                            <div class="cell" id=":-:4,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,11">
+                            <div class="cell" id="Black:d:5,11" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">d</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,11">
+                            <div class="cell" id=":-:6,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,11">
+                            <div class="cell" id=":-:7,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,11">
+                            <div class="cell" id=":-:8,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,11">
+                            <div class="cell" id=":-:9,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,11">
+                            <div class="cell" id=":-:10,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,11">
+                            <div class="cell" id=":-:11,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,11">
+                            <div class="cell" id="Black:d:12,11" draggable="true">
+                                <div class="Bshogi">☗</div>
+                                <div class="BlackPiece">d</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,11">
+                            <div class="cell" id=":-:13,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,11">
+                            <div class="cell" id=":-:14,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,11">
+                            <div class="cell" id=":-:15,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,11">
+                            <div class="cell" id=":-:16,11" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,10">
+                            <div class="cell" id=":-:1,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,10">
+                            <div class="cell" id=":-:2,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,10">
+                            <div class="cell" id=":-:3,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,10">
+                            <div class="cell" id=":-:4,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,10">
+                            <div class="cell" id=":-:5,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,10">
+                            <div class="cell" id=":-:6,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,10">
+                            <div class="cell" id=":-:7,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,10">
+                            <div class="cell" id=":-:8,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,10">
+                            <div class="cell" id=":-:9,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,10">
+                            <div class="cell" id=":-:10,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,10">
+                            <div class="cell" id=":-:11,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,10">
+                            <div class="cell" id=":-:12,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,10">
+                            <div class="cell" id=":-:13,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,10">
+                            <div class="cell" id=":-:14,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,10">
+                            <div class="cell" id=":-:15,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,10">
+                            <div class="cell" id=":-:16,10" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,9">
+                            <div class="cell" id=":-:1,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,9">
+                            <div class="cell" id=":-:2,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,9">
+                            <div class="cell" id=":-:3,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,9">
+                            <div class="cell" id=":-:4,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,9">
+                            <div class="cell" id=":-:5,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,9">
+                            <div class="cell" id=":-:6,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,9">
+                            <div class="cell" id=":-:7,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,9">
+                            <div class="cell" id=":-:8,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,9">
+                            <div class="cell" id=":-:9,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,9">
+                            <div class="cell" id=":-:10,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,9">
+                            <div class="cell" id=":-:11,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,9">
+                            <div class="cell" id=":-:12,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,9">
+                            <div class="cell" id=":-:13,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,9">
+                            <div class="cell" id=":-:14,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,9">
+                            <div class="cell" id=":-:15,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,9">
+                            <div class="cell" id=":-:16,9" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,8">
+                            <div class="cell" id=":-:1,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,8">
+                            <div class="cell" id=":-:2,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,8">
+                            <div class="cell" id=":-:3,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,8">
+                            <div class="cell" id=":-:4,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,8">
+                            <div class="cell" id=":-:5,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,8">
+                            <div class="cell" id=":-:6,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,8">
+                            <div class="cell" id=":-:7,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,8">
+                            <div class="cell" id=":-:8,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,8">
+                            <div class="cell" id=":-:9,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,8">
+                            <div class="cell" id=":-:10,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,8">
+                            <div class="cell" id=":-:11,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,8">
+                            <div class="cell" id=":-:12,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,8">
+                            <div class="cell" id=":-:13,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,8">
+                            <div class="cell" id=":-:14,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,8">
+                            <div class="cell" id=":-:15,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,8">
+                            <div class="cell" id=":-:16,8" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,7">
+                            <div class="cell" id=":-:1,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,7">
+                            <div class="cell" id=":-:2,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,7">
+                            <div class="cell" id=":-:3,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,7">
+                            <div class="cell" id=":-:4,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,7">
+                            <div class="cell" id=":-:5,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,7">
+                            <div class="cell" id=":-:6,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,7">
+                            <div class="cell" id=":-:7,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,7">
+                            <div class="cell" id=":-:8,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,7">
+                            <div class="cell" id=":-:9,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,7">
+                            <div class="cell" id=":-:10,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,7">
+                            <div class="cell" id=":-:11,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,7">
+                            <div class="cell" id=":-:12,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,7">
+                            <div class="cell" id=":-:13,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,7">
+                            <div class="cell" id=":-:14,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,7">
+                            <div class="cell" id=":-:15,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,7">
+                            <div class="cell" id=":-:16,7" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,6">
+                            <div class="cell" id=":-:1,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,6">
+                            <div class="cell" id=":-:2,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,6">
+                            <div class="cell" id=":-:3,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,6">
+                            <div class="cell" id=":-:4,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,6">
+                            <div class="cell" id="White:d:5,6" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">d</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,6">
+                            <div class="cell" id=":-:6,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,6">
+                            <div class="cell" id=":-:7,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,6">
+                            <div class="cell" id=":-:8,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,6">
+                            <div class="cell" id=":-:9,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,6">
+                            <div class="cell" id=":-:10,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,6">
+                            <div class="cell" id=":-:11,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,6">
+                            <div class="cell" id="White:d:12,6" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">d</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,6">
+                            <div class="cell" id=":-:13,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,6">
+                            <div class="cell" id=":-:14,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,6">
+                            <div class="cell" id=":-:15,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,6">
+                            <div class="cell" id=":-:16,6" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,5">
+                            <div class="cell" id="White:p:1,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,5">
+                            <div class="cell" id="White:p:2,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,5">
+                            <div class="cell" id="White:p:3,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,5">
+                            <div class="cell" id="White:p:4,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,5">
+                            <div class="cell" id="White:p:5,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,5">
+                            <div class="cell" id="White:p:6,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,5">
+                            <div class="cell" id="White:p:7,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,5">
+                            <div class="cell" id="White:p:8,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,5">
+                            <div class="cell" id="White:p:9,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,5">
+                            <div class="cell" id="White:p:10,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,5">
+                            <div class="cell" id="White:p:11,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,5">
+                            <div class="cell" id="White:p:12,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,5">
+                            <div class="cell" id="White:p:13,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,5">
+                            <div class="cell" id="White:p:14,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,5">
+                            <div class="cell" id="White:p:15,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,5">
+                            <div class="cell" id="White:p:16,5" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">p</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,4">
+                            <div class="cell" id="White:sm:1,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">sm</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,4">
+                            <div class="cell" id="White:vm:2,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">vm</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,4">
+                            <div class="cell" id="White:r:3,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">r</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,4">
+                            <div class="cell" id="White:hf:4,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">hf</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,4">
+                            <div class="cell" id="White:se:5,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">se</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,4">
+                            <div class="cell" id="White:bg:6,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">bg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,4">
+                            <div class="cell" id="White:rg:7,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">rg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,4">
+                            <div class="cell" id="White:gg:8,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">gg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,4">
+                            <div class="cell" id="White:vg:9,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">vg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,4">
+                            <div class="cell" id="White:rg:10,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">rg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,4">
+                            <div class="cell" id="White:bg:11,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">bg</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,4">
+                            <div class="cell" id="White:se:12,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">se</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,4">
+                            <div class="cell" id="White:hf:13,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">hf</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,4">
+                            <div class="cell" id="White:r:14,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">r</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,4">
+                            <div class="cell" id="White:vm:15,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">vm</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,4">
+                            <div class="cell" id="White:sm:16,4" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">sm</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,3">
+                            <div class="cell" id="White:ss:1,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">ss</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,3">
+                            <div class="cell" id="White:vs:2,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">vs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,3">
+                            <div class="cell" id="White:b:3,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">b</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,3">
+                            <div class="cell" id="White:dh:4,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">dh</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,3">
+                            <div class="cell" id="White:dk:5,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">dk</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,3">
+                            <div class="cell" id="White:wb:6,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">wb</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,3">
+                            <div class="cell" id="White:fd:7,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">fd</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,3">
+                            <div class="cell" id="White:lh:8,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">lh</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,3">
+                            <div class="cell" id="White:fe:9,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">fe</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,3">
+                            <div class="cell" id="White:fd:10,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">fd</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,3">
+                            <div class="cell" id="White:wb:11,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">wb</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,3">
+                            <div class="cell" id="White:dk:12,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">dk</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,3">
+                            <div class="cell" id="White:dh:13,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">dh</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,3">
+                            <div class="cell" id="White:b:14,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">b</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,3">
+                            <div class="cell" id="White:vs:15,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">vs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,3">
+                            <div class="cell" id="White:ss:16,3" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">ss</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,2">
+                            <div class="cell" id="White:rc:1,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">rc</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,2">
+                            <div class="cell" id=":-:2,2" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,2">
+                            <div class="cell" id="White:cs:3,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,2">
+                            <div class="cell" id="White:cs:4,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,2">
+                            <div class="cell" id=":-:5,2" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,2">
+                            <div class="cell" id="White:bt:6,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">bt</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,2">
+                            <div class="cell" id="White:kr:7,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">kr</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,2">
+                            <div class="cell" id="White:ln:8,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">ln</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,2">
+                            <div class="cell" id="White:q:9,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">q</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,2">
+                            <div class="cell" id="White:ph:10,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">ph</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,2">
+                            <div class="cell" id="White:bt:11,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">bt</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,2">
+                            <div class="cell" id=":-:12,2" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,2">
+                            <div class="cell" id="White:cs:13,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,2">
+                            <div class="cell" id="White:cs:14,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">cs</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,2">
+                            <div class="cell" id=":-:15,2" draggable="false">
+                                <div class="emptyPiece">.</div>
+                                <div class="Piece">.</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,2">
+                            <div class="cell" id="White:rc:16,2" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">rc</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="element" id="1,1">
+                            <div class="cell" id="White:l:1,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">l</div>
+                            </div>
+                        </td>
+                        <td class="element" id="2,1">
+                            <div class="cell" id="White:n:2,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">n</div>
+                            </div>
+                        </td>
+                        <td class="element" id="3,1">
+                            <div class="cell" id="White:fl:3,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">fl</div>
+                            </div>
+                        </td>
+                        <td class="element" id="4,1">
+                            <div class="cell" id="White:i:4,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">i</div>
+                            </div>
+                        </td>
+                        <td class="element" id="5,1">
+                            <div class="cell" id="White:c:5,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">c</div>
+                            </div>
+                        </td>
+                        <td class="element" id="6,1">
+                            <div class="cell" id="White:s:6,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">s</div>
+                            </div>
+                        </td>
+                        <td class="element" id="7,1">
+                            <div class="cell" id="White:g:7,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">g</div>
+                            </div>
+                        </td>
+                        <td class="element" id="8,1">
+                            <div class="cell" id="White:k:8,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece" id="King">k</div>
+                            </div>
+                        </td>
+                        <td class="element" id="9,1">
+                            <div class="cell" id="White:de:9,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">de</div>
+                            </div>
+                        </td>
+                        <td class="element" id="10,1">
+                            <div class="cell" id="White:g:10,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">g</div>
+                            </div>
+                        </td>
+                        <td class="element" id="11,1">
+                            <div class="cell" id="White:s:11,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">s</div>
+                            </div>
+                        </td>
+                        <td class="element" id="12,1">
+                            <div class="cell" id="White:c:12,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">c</div>
+                            </div>
+                        </td>
+                        <td class="element" id="13,1">
+                            <div class="cell" id="White:i:13,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">i</div>
+                            </div>
+                        </td>
+                        <td class="element" id="14,1">
+                            <div class="cell" id="White:fl:14,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">fl</div>
+                            </div>
+                        </td>
+                        <td class="element" id="15,1">
+                            <div class="cell" id="White:n:15,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">n</div>
+                            </div>
+                        </td>
+                        <td class="element" id="16,1">
+                            <div class="cell" id="White:l:16,1" draggable="true">
+                                <div class="Wshogi">☖</div>
+                                <div class="WhitePiece">l</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="dvWHand">
+            <table id="WHand">
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="button" onclick="exit()">
+        <p class="btnText">EXIT</p>
+        <div class="btnTwo">
+            <p class="btnText2">X</p>
+        </div>
+    </div>
+
+
+
+
+    <!--    SCRIPT FOR BUTTONS -->
+    <script>
+        $(document).ready(function() {
+            $('.paper').mousedown(function(e) {
+                var ripple = $(this).find('.ripple');
+                ripple.removeClass('animate');
+                var x = parseInt(e.pageX - $(this).offset().left) - (ripple.width() / 2);
+                var y = parseInt(e.pageY - $(this).offset().top) - (ripple.height() / 2);
+                ripple.css({
+                    top: y,
+                    left: x
+                }).addClass('animate');
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

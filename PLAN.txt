@@ -1,0 +1,23 @@
+How you would use your software to make money?
+
+
+What are we selling?
+We are going to host the server ourselves and users can connect via the GUI and will be able to choose to play
+against an AI or against the next user that connects.
+
+Our game will be free for basic users. But we will be able to make money on advertisements and upgrading
+basic users.
+
+Who are we selling to?
+We will be selling to the general public to be users and we will be selling advertisement space
+to larger companies. Refunds won't be offered because clients can use the free version before
+committing to pay for the full version.
+
+Getting licensed?
+We will be going to a lawyer who specializes in the industry for a software licensing. We will also
+be talking to our lawyer about how to Copyright our work so that we will always hold the intellectual
+property of the code. We will talk about any liability issues with the lawyer.
+
+Support?
+We will have a team that will keep the checking, updating, and upgrading the server and the software and fix any reported bugs.
+This team will also be able to assist clients if they are having issues with the software or connecting to the server.

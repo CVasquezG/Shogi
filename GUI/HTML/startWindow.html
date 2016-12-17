@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/startWindow.css">
+    <script src="/js/jquery-1.10.1.min.js"></script>
+    <script src="/js/json3.min.js"></script>
+    <script src="/js/generateBoard.js"></script>
+
+
+</head>
+
+<body class="blink-show">
+
+
+    <h1>ShogiXTreme-o-Rama</h1>
+
+
+    <div id="holder">
+
+        <div class="button" onclick="startNewGame()">
+            <p class="btnText">NEW GAME</p>
+            <div class="btnTwo">
+                <p class="btnText2">GO!</p>
+            </div>
+        </div>
+        <form>
+            <div class="group">
+                <input type="text" id="fileText" placeholder="File Name"><span class="highlight"></span><span class="bar"></span>
+                <!--   <label>File Name</label> -->
+            </div>
+
+        </form>
+        <div class="button" onclick="contGame()">
+            <p class="btnText">Continue Game</p>
+            <div class="btnTwo">
+                <p class="btnText2">GO!</p>
+            </div>
+        </div>
+
+        <div class="button" onclick="replayGame()">
+            <p class="btnText">Replay Game</p>
+            <div class="btnTwo">
+                <p class="btnText2">GO!</p>
+            </div>
+        </div>
+
+
+        <div class="button" onclick="exit()">
+            <p class="btnText">QUIT</p>
+            <div class="btnTwo">
+                <p class="btnText2">X</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="tilt">
+        <div id="puns" class="pop"> Love means never having to say you're Shogi
+        </div>
+    </div>
+
+</body>
+
+</html>

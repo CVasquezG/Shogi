@@ -1,0 +1,241 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/newGame.css">
+    <script src="/js/jquery-1.10.1.min.js"></script>
+    <script src="/js/json3.min.js"></script>
+    <script src="/js/generateBoard.js"></script>
+
+
+</head>
+
+<body class="blink-show">
+
+    <h1>Create New Game</h1>
+
+    <div class="container">
+        <h2>Select type of Game:</h2>
+        <!--
+          <input type='button' onclick='remoteGameAI()' value='Remote(AI)'>
+          <input type='button' onclick='remoteGameP()' value='Remote(Player)'>
+          <input type='button' onclick='localP()' value='Local(Player)'>
+          <input type='button' onclick='localAI()' value='Local(AI)'>
+          <input type='button' onclick='HostP()' value='Host(Player)'>
+          <input type='button' onclick='HostAI()' value='Host(AI)'>
+  -->
+        <input type="radio" name="rb" id="rb1" onclick="remoteGameAI()">
+        <label class="radLabel" for="rb1">Remote(AI)</label>
+        <input type="radio" name="rb" id="rb2" onclick="remoteGameP()">
+        <label class="radLabel" for="rb2">Remote(Player)</label>
+        <input type="radio" name="rb" id="rb3" onclick="localP()">
+        <label class="radLabel" for="rb3">Local(Player)</label>
+        <input type="radio" name="rb" id="rb4" onclick="localAI()">
+        <label class="radLabel" for="rb4">Local(AI)</label>
+        <input type="radio" name="rb" id="rb5" onclick="HostP()">
+        <label class="radLabel" for="rb5">Host(Player)</label>
+        <input type="radio" name="rb" id="rb6" onclick="HostAI()">
+        <label class="radLabel" for="rb6">Host(AI)</label>
+    </div>
+
+    <div class="choicesGame">
+        <!--
+      <div class='nameGame'>
+          <label for='fileText'>File Name:</label>
+          <input type='text' id='fileText' placeholder='Enter file name'>
+      </div>
+  -->
+
+        <div id="inputholder">
+            <div class="group">
+                <input class="ripInput" type="text" id="fileText" placeholder="File Name"><span class="highlight"></span><span class="bar"></span>
+                <!--        <label class='ripLabel'>File Name</label>-->
+            </div>
+        </div>
+
+
+        <!--    SELECT  OPTIONS-->
+
+        <div class="typeGame">
+            <div class="sel sel--black-panther"><span class="sel__placeholder sel__placeholder--black-panther" data-placeholder="Type of Shogi">Type of Shogi</span>
+                <div class="sel__box sel__box--black-panther"><span class="sel__box__options sel__box__options--black-panther">Mini</span><span class="sel__box__options sel__box__options--black-panther">Shogi</span><span class="sel__box__options sel__box__options--black-panther">Chu</span><span class="sel__box__options sel__box__options--black-panther">Tenjiku</span></div>
+                <select name="select-profession" id="gameType" style="display: none;">
+      <option value="">Type of Shogi</option>
+      <option value="Mini">Mini</option>
+      <option value="Shogi">Shogi</option>
+      <option value="Chu">Chu</option>
+      <option value="Tenjiku">Tenjiku</option>
+    </select>
+            </div>
+        </div>
+
+
+        <div class="difficultyGame">
+            <div class="sel sel--black-panther"><span class="sel__placeholder sel__placeholder--black-panther" data-placeholder="Difficulty">Difficulty</span>
+                <div class="sel__box sel__box--black-panther"><span class="sel__box__options sel__box__options--black-panther">Normal</span><span class="sel__box__options sel__box__options--black-panther">Hard</span><span class="sel__box__options sel__box__options--black-panther">Suicidal</span>
+                    <span
+                        class="sel__box__options sel__box__options--black-panther">Protracted death</span><span class="sel__box__options sel__box__options--black-panther">Random AI</span></div>
+                <select name="select-profession" id="gameDifficulty" style="display: none;">
+      <option value="" disabled="">Difficulty</option>
+      <option value="Normal">Normal</option>
+      <option value="Hard">Hard</option>
+      <option value="Suicidal">Suicidal</option>
+      <option value="Protracted_Death">Protracted death</option>
+      <option value="Random_AI">Random AI</option>
+    </select>
+            </div>
+        </div>
+
+
+        <!--    CHECK BOXES -->
+        <div class="checkB">
+            <div class="cheatGame">
+                <input type="checkbox" name="cb" id="cheatcheckbox">
+                <label class="ckLabel" for="cheatcheckbox">Cheating</label>
+
+            </div>
+
+            <div class="flipGame">
+                <input type="checkbox" name="cb" id="flipcheckbox">
+                <label class="ckLabel" for="flipcheckbox">Japanese roulette mode</label>
+            </div>
+            <div class="goFirst">
+                <input type="checkbox" name="cb" id="goFirstcheckbox">
+                <label class="ckLabel" for="goFirstcheckbox">Go first</label>
+
+            </div>
+
+        </div>
+
+
+        <!--TEXT INPUTS-->
+
+        <!--
+      <div class='timeLimGame'>
+          <label for='timeLimit'>Time Limit:</label>
+          <input type='number' min='0' id='timeLimit' placeholder='Optional' value='0'>
+      </div>
+  -->
+
+
+        <div id="inputholder">
+            <div class="group">
+                <input class="ripInput" type="number" min="0" id="timeLimit" placeholder="Time Limit"><span class="highlight"></span><span class="bar"></span>
+                <!--        <label class='ripLabel'>Time Limit</label>-->
+            </div>
+        </div>
+
+
+
+        <!--
+      <div class='timeIncGame'>
+          <label for='timeInc'>Time Increment:</label>
+          <input type='number' min='0' id='timeInc' placeholder='Optional' value='0'>
+      </div>
+  -->
+
+        <div id="inputholder">
+            <div class="group">
+                <input class="ripInput" type="number" min="0" id="timeInc" placeholder="Time Increment"><span class="highlight"></span><span class="bar"></span>
+                <!--        <label class='ripLabel'>Time Limit</label>-->
+            </div>
+        </div>
+
+
+
+        <!--
+      <div class='ip_addr'>
+          <label for='fileText'>IP Address:</label>
+          <input type='text' id='ipText' placeholder='Enter IP Address'>
+      </div>
+
+  -->
+
+        <div id="inputholder" class="ip_addr">
+            <div class="group">
+                <input class="ripInput" type="text" id="ipText" placeholder="Enter IP Address"><span class="highlight"></span><span class="bar"></span>
+                <!--        <label class='ripLabel'>Time Limit</label>-->
+            </div>
+        </div>
+
+        <!--
+      <div class='port_num'>
+          <label for='fileText'>Port Number:</label>
+          <input type='text' id='portText' placeholder='Enter Port Number'>
+      </div>
+  -->
+
+        <div id="inputholder" class="port_num">
+            <div class="group">
+                <input class="ripInput" type="text" id="portText" placeholder="Enter Port Number"><span class="highlight"></span><span class="bar"></span>
+                <!--        <label class='ripLabel'>Time Limit</label>-->
+            </div>
+        </div>
+
+
+        <!--    CONTINUE BUTTON-->
+        <div class="button" onclick="getValues()">
+            <p class="btnText">create game</p>
+            <div class="btnTwo">
+                <p class="btnText2">GO!</p>
+            </div>
+        </div>
+
+    </div>
+    <!--    STUFF FROM NEW WINDOW-->
+
+
+
+
+    <script>
+        /* ===== Logic for creating fake Select Boxes ===== */
+        $('.sel').each(function() {
+            $(this).children('select').css('display', 'none');
+
+            var $current = $(this);
+
+            $(this).find('option').each(function(i) {
+                if (i == 0) {
+                    $current.prepend($('<div>', {
+                        class: $current.attr('class').replace(/sel/g, 'sel__box')
+                    }));
+
+                    var placeholder = $(this).text();
+                    $current.prepend($('<span>', {
+                        class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
+                        text: placeholder,
+                        'data-placeholder': placeholder
+                    }));
+
+                    return;
+                }
+
+                $current.children('div').append($('<span>', {
+                    class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
+                    text: $(this).text()
+                }));
+            });
+        });
+
+        // Toggling the `.active` state on the `.sel`.
+        $('.sel').click(function() {
+            $(this).toggleClass('active');
+        });
+
+        // Toggling the `.selected` state on the options.
+        $('.sel__box__options').click(function() {
+            var txt = $(this).text();
+            var index = $(this).index();
+
+            $(this).siblings('.sel__box__options').removeClass('selected');
+            $(this).addClass('selected');
+
+            var $currentSel = $(this).closest('.sel');
+            $currentSel.children('.sel__placeholder').text(txt);
+            $currentSel.children('select').prop('selectedIndex', index + 1);
+        });
+    </script>
+
+
+</body>
+
+</html>
